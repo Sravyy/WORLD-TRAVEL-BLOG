@@ -1,5 +1,13 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<WorldTravelBlog.Models.Person>
+
+<html>
+<head>
+    <title>World Travel Blog</title>
+</head>
+<body>
+    <h2>World Travel Blog</h2>
+    <p>@Html.ActionLink("People I Met", "Index", "People")</p>
+    <p>@Html.ActionLink("Experiences", "Index", "Experiences")</p>
+    <p>@Html.ActionLink("Locations", "Index", "Locations")</p>
+</body>
+</html>

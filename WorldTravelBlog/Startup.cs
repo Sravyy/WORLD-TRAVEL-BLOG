@@ -27,15 +27,31 @@ namespace WorldTravelBlog
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+            services.AddEntityFrameworkMySql();
             services.AddEntityFramework()
                     .AddDbContext<WorldTravelBlogContext>(options =>
                     options.UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
         }
 
 
-        public void Configure(IApplicationBuilder app)
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseStaticFiles();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                  name: "default",
+                  template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
+            loggerFactory.AddConsole();
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
             app.Run(async (context) =>
             {
