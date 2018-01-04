@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WorldTravelBlog.Models
@@ -9,5 +10,7 @@ namespace WorldTravelBlog.Models
         [Key]
         public int LocationId { get; set; }
         public string City { get; set; }
+        public virtual ICollection<Experience> Experiences { get; set; }
+        public virtual ICollection<Person> People { get; set; }
     }
 }
