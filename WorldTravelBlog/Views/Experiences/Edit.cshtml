@@ -1,0 +1,24 @@
+﻿@model WorldTravelBlog.Models.Experience
+
+@{
+    ViewData["Title"] = "Experience";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Edit</h2>
+<hr>
+<h4>Edit this Description: @Html.DisplayFor(model => model.Description)</h4>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ExperienceId)
+
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
+
+    @Html.LabelFor(model => model.LocationId)
+    @Html.DropDownList("LocationId")
+
+    <input type="submit" value="Save" class="btn btn-default" />
+}
+@Html.ActionLink("Back to List", "Index")
